@@ -1,0 +1,10 @@
+- task: Request
+  url: http://localhost:3000/HelloWorld
+  options:
+    headers:
+      Content-Type: application/json
+- task: Request
+  url: http://localhost:3000/HelloWorldA
+  options:
+    headers:
+      Content-Type: application/json

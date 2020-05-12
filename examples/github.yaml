@@ -1,0 +1,10 @@
+- task: Request
+  url: https://api.github.com/repos/zinkem5/fast-docker/contributors
+  options:
+    headers:
+      Content-Type: application/json
+- task: Request
+  url: https://api.github.com/repos/zinkem5/fast-docker
+  options:
+    headers:
+      Content-Type: application/json

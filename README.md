@@ -19,20 +19,20 @@ A more complex example with configuration using the same options as Node's
 HTTP Request objects
 
 ```YAML
-request:
-  url: http://localhost:3000/HelloWorld
-  method: POST
-  headers:
-    Content-Type: application/json
-  body:
-   name: Matt
-request:
-  url: http://big-ip.example.com/mgmt/shared/appsvcs/declare
-  options:
+- request:
+    url: http://localhost:3000/HelloWorld
     method: POST
     headers:
       Content-Type: application/json
-    body: $
+    body:
+     name: Matt
+- request:
+    url: http://big-ip.example.com/mgmt/shared/appsvcs/declare
+    options:
+      method: POST
+      headers:
+        Content-Type: application/json
+      body: $
 ```
 The results of the first request are used in the second request.
 
@@ -145,3 +145,9 @@ request.
 
 * webhook {{string}}
   URL to post results of this request
+
+
+# Known Issues
+
+- TODO: JSON path transfer
+- TODO: Template integration for response->request transforms 

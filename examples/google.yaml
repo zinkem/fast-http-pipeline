@@ -1,0 +1,4 @@
+task: Request
+url: https://google.com
+options:
+  timeout: 1000

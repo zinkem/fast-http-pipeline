@@ -1,0 +1,30 @@
+{
+  "name": "fast-http-pipeline",
+  "version": "0.1.0",
+  "description": "Pipeline HTTP requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "api chaining http templates fast f5-fast"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zinkem/fast-http-pipeline.git"
+  },
+  "keywords": [
+    "api",
+    "chaining",
+    "http",
+    "templates",
+    "fast",
+    "f5-fast"
+  ],
+  "author": "Matthew Zinke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zinkem/fast-http-pipeline/issues"
+  },
+  "homepage": "https://github.com/zinkem/fast-http-pipeline#readme",
+  "dependencies": {
+    "js-yaml": "^3.13.1"
+  }
+}
