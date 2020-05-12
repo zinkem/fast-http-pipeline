@@ -6,7 +6,14 @@ HTTP pipeline with FAST templates
 
 Define HTTP pipelines with YAML configs and [JSONPath](https://jsonpath.com/) syntax.
 
-# Example
+# Usage
+
+```sh
+npm ci
+node . <pipeline file>
+```
+
+# Example Pipelines
 
 Hello World
 
@@ -150,4 +157,4 @@ request.
 # Known Issues
 
 - TODO: JSON path transfer
-- TODO: Template integration for response->request transforms 
+- TODO: Template integration for response->request transforms
