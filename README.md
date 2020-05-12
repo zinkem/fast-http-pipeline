@@ -43,88 +43,105 @@ request.
 
 # Quick Reference [source](https://nodejs.org/api/http.html)
 
-* url <string> | <URL>
+* url {{string}}
 
-* options <Object>
+* options {{Object}}
 
-  - agent <http.Agent> | <boolean>
+  - agent {{boolean}}
+
     Controls Agent behavior. Possible values:
      * undefined (default): use http.globalAgent for this host and port.
-     * Agent object: explicitly use the passed in Agent.
      * false: causes a new Agent with default values to be used.
 
-  - auth <string>
+  - auth {{string}}
+
     Basic authentication i.e. 'user:password' to compute an
     Authorization header.
 
-  - createConnection <Function>
+  - createConnection {{Function}}
+
     A function that produces a socket/stream to use
     for the request when the agent option is not used. This can be used to avoid
     creating a custom Agent class just to override the default createConnection
     function. See agent.createConnection() for more details. Any Duplex stream is
     a valid return value.
 
-  - defaultPort <number>
+  - defaultPort {{number}}
+
     Default port for the protocol. Default: agent.defaultPort
     if an Agent is used, else undefined.
 
-  - family <number>
+  - family {{number}}
+
     IP address family to use when resolving host or hostname.
     Valid values are 4 or 6. When unspecified, both IP v4 and v6 will be used.
 
-  - headers <Object>
+  - headers {{Object}}
     An object containing request headers.
 
-  - host <string>
+  - host {{string}}
+
     A domain name or IP address of the server to issue the request
     to. Default: 'localhost'.
 
-  - hostname <string>
+  - hostname {{string}}
+
     Alias for host. To support url.parse(), hostname will be
     used if both host and hostname are specified.
 
-  - insecureHTTPParser <boolean>
+  - insecureHTTPParser {{boolean}}
+
     Use an insecure HTTP parser that accepts invalid
     HTTP headers when true. Using the insecure parser should be avoided. See --
     insecure-http-parser for more information. Default: false
 
-  - localAddress <string>
+  - localAddress {{string}}
+
     Local interface to bind for network connections.
 
-  - lookup <Function>
+  - lookup {{Function}}
+
     Custom lookup function. Default: dns.lookup().
 
-  - maxHeaderSize <number>
+  - maxHeaderSize {{number}}
+
     Optionally overrides the value of --max-http-header-
     size for requests received from the server, i.e. the maximum length of response
     headers in bytes. Default: 16384 (16KB).
 
-  - method <string>
+  - method {{string}}
+
     A string specifying the HTTP request method. Default: 'GET'.
 
-  - path <string>
+  - path {{string}}
+
     Request path. Should include query string if any. E.G. '/
     index.html?page=12'. An exception is thrown when the request path contains
     illegal characters. Currently, only spaces are rejected but that may change in
     the future. Default: '/'.
 
-  - port <number>
+  - port {{number}}
+
     Port of remote server. Default: defaultPort if set, else 80.
 
-  - protocol <string>
+  - protocol {{string}}
+
     Protocol to use. Default: 'http:'.
 
-  - setHost <boolean>:
+  - setHost {{boolean}}:
+
     Specifies whether or not to automatically add the Host
     header. Defaults to true.
 
-  - socketPath <string>
+  - socketPath {{string}}
+
     Unix Domain Socket (cannot be used if one of host or port
       is specified, those specify a TCP Socket).
 
-  - timeout <number>:
+  - timeout {{number}}:
+
     A number specifying the socket timeout in milliseconds. This
     will set the timeout before the socket is connected.
 
-* webhook <url>
+* webhook {{string}}
   URL to post results of this request
