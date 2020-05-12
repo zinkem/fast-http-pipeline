@@ -1,0 +1,24 @@
+title: FAST Pipeline Responses
+description: |
+  # FAST Pipeline Responses
+
+  This schema describes the responses that will come back, at a high level.
+  Specific response bodies will depend on the APIs being called, but the top
+  level structure will hold true for any terminated HTTP response.
+type: object
+properties:
+  options:
+    description: HTTP options used to make the request
+  status:
+    description: Status Code
+  headers:
+    description: Headers in the response
+  body:
+    description: Response body from request
+  filename:
+    description: filename downloaded if octet stream
+required:
+  - options
+  - status
+  - headers
+  

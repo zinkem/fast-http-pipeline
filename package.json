@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/zinkem/fast-http-pipeline#readme",
   "dependencies": {
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "jsonpath": "^1.0.2"
   }
 }

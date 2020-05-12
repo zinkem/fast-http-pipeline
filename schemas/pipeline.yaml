@@ -1,0 +1,165 @@
+title: FAST Pipeline
+description: |
+  # HTTP API Chains with FAST Pipeline
+
+  Pipeline stages make requests to API targets, according to pipeline
+  configuration files that specify HTTP request parameters.
+
+  Data from responses can be pulled into the next stage using JSON Path.
+
+  Using the FAST Pipeline to make calls between API targets and FAST template
+  rendering services, complex API workflows can be represented and repeated.
+
+  Pipeline configurations are validated by this schema before processing.
+definitions:
+  http_options:
+    description: HTTP options (overides URL)
+    type: object
+    properties:
+      url:
+        type: string
+      options:
+        type: Object
+      agent:
+        type: boolean
+        description: |
+          Controls Agent behavior. Possible values:
+           * undefined (default): use http.globalAgent for this host and port.
+           * false: causes a new Agent with default values to be used.
+      auth:
+        type: string
+        description: |
+          Basic authentication i.e. 'user:password' to compute an
+          Authorization header.
+      createConnection:
+        type: Function
+        description: |
+          A function that produces a socket/stream to use
+          for the request when the agent option is not used. This can be used to avoid
+          creating a custom Agent class just to override the default createConnection
+          function. See agent.createConnection() for more details. Any Duplex stream is
+          a valid return value.
+      defaultPort:
+        type: number
+        description: |
+          Default port for the protocol. Default: agent.defaultPort
+          if an Agent is used, else undefined.
+      family:
+        type: number
+        description: |
+          IP address family to use when resolving host or hostname.
+          Valid values are 4 or 6. When unspecified, both IP v4 and v6 will be used.
+      headers:
+        type: Object
+        description: |
+          An object containing request headers.
+      host:
+        type: string
+        description: |
+          A domain name or IP address of the server to issue the request
+          to. Default: 'localhost'.
+      hostname:
+        type: string
+        description: |
+          Alias for host. To support url.parse(), hostname will be
+          used if both host and hostname are specified.
+      insecureHTTPParser:
+        type: boolean
+        description: |
+          Use an insecure HTTP parser that accepts invalid
+          HTTP headers when true. Using the insecure parser should be avoided. See --
+          insecure-http-parser for more information.
+        default: false
+      localAddress:
+        type: string
+        description: |
+          Local interface to bind for network connections.
+      lookup:
+        type: Function
+        description: |
+          Custom lookup function. Default: dns.lookup().
+      maxHeaderSize:
+        type: number
+        description: |
+          Optionally overrides the value of --max-http-header-
+          size for requests received from the server, i.e. the maximum length of response
+          headers in bytes. Default: 16384 (16KB).
+      method:
+        type: string
+        description: |
+          A string specifying the HTTP request method.
+        default: GET
+        enum:
+          - GET
+          - PUT
+          - POST
+          - OPTIONS
+          - PATCH
+          - DELETE
+      path:
+        type: string
+        description: |
+          Request path. Should include query string if any. E.G. '/
+          index.html?page=12'. An exception is thrown when the request path contains
+          illegal characters. Currently, only spaces are rejected but that may change in
+          the future. Default: '/'.
+      port:
+        type: number
+        description: |
+          Port of remote server. Default: defaultPort if set, else 80.
+
+      protocol:
+        type: string
+        description: |
+          Protocol to use. Default: 'http:'.
+
+      setHost:
+        type: boolean}
+        description: |
+          Specifies whether or not to automatically add the Host
+          header. Defaults to true.
+
+      socketPath:
+        type: string
+        description: |
+          Unix Domain Socket (cannot be used if one of host or port
+            is specified, those specify a TCP Socket).
+
+        timeout:
+        type: number
+        description: |
+          A number specifying the socket timeout in milliseconds. This
+          will set the timeout before the socket is connected.
+  body:
+    oneOf:
+      - type: object
+        additionalProperties:
+          $ref: '#/definitions/body'
+      - type: string
+        description: json path or literal string
+  pipeline:
+    type: array
+    items:
+      $ref: '#definitions/stage'
+  stage:
+    type: object
+    properties:
+      task:
+        type: string
+        enum:
+          - Request
+      url:
+        type: string
+        description: valid url
+      options:
+        description: see http options
+        $ref: '#/definitions/http_options'
+      webhook:
+        type: string
+        description: |
+          URL to post results of this request
+      body:
+        $ref: '#/defnitions/body'
+oneOf:
+  - $ref: '#/definitions/pipeline'
+  - $ref: '#/definitions/stage'
