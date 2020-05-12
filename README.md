@@ -4,9 +4,9 @@ HTTP pipeline with FAST templates
 
 # Introduction
 
-Define HTTP pipelines with YAML configs and JSONPath syntax.
+Define HTTP pipelines with YAML configs and [JSONPath](https://jsonpath.com/) syntax.
 
-# example
+# Example
 
 Hello World
 
