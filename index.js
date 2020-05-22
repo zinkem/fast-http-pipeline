@@ -202,7 +202,7 @@ readFile(fname)
     if( config instanceof Array ) {
       return chainBuilder(config.map(stage => taskRouter(stage)))({});
     } else {
-      return taskRouter(config);
+      return taskRouter(config)({});
     }
   })
   .then((result) => {

@@ -18,28 +18,30 @@ node . <pipeline file>
 Hello World
 
 ```YAML
-request:
-  url: https://google.com
+task: Request
+url: https://google.com
+options:
+  timeout: 1000
 ```
 
 A more complex example with configuration using the same options as Node's
 HTTP Request objects
 
 ```YAML
-- request:
-    url: http://localhost:3000/HelloWorld
+- task: request
+  url: http://localhost:3000/HelloWorld
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+   name: Matt
+- task: request
+  url: http://big-ip.example.com/mgmt/shared/appsvcs/declare
+  options:
     method: POST
     headers:
       Content-Type: application/json
-    body:
-     name: Matt
-- request:
-    url: http://big-ip.example.com/mgmt/shared/appsvcs/declare
-    options:
-      method: POST
-      headers:
-        Content-Type: application/json
-      body: $
+    body: $
 ```
 The results of the first request are used in the second request.
 
