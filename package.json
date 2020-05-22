@@ -4,7 +4,11 @@
   "description": "Pipeline HTTP requests",
   "main": "index.js",
   "scripts": {
-    "test": "api chaining http templates fast f5-fast"
+    "build": "docker build . --tag http_pipeline",
+    "gendist": "docker create http_pipeline | xargs -I$ docker cp $:/usr/src/app/ dist && rm -rf dist/node_modules",
+    "test": "nyc npx mocha",
+    "version": "npm run build && npm run gendist && git commit -a -m'release'",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
